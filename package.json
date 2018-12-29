@@ -1,6 +1,6 @@
 {
   "name": "click-outside-render-prop",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "a typescript render-prop click outside component for react",
   "keywords": ["react", "dom", "click-outside", "typescript"],
   "main": "dist/click-outside-render-prop.umd.js",
@@ -12,7 +12,7 @@
   "author": "Timothee Clain <timothee.clain@gmail.com>",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/tclain/click-outside-render-prop"
   },
   "license": "MIT",
   "engines": {
