@@ -2,8 +2,11 @@ import * as React from 'react'
 import PropTypes from 'prop-types'
 
 // based on the awesome work done by tj/react-click-outside
-
-export default class ClickOutside extends React.Component<any> {
+export interface ClickOutsideProps {
+  onClickOutside: VoidFunction
+  children: (opts: {ref: React.RefObject<any>}) => React.ReactNode
+}
+export default class ClickOutside extends React.Component<ClickOutsideProps> {
   private isTouch: boolean = false
   private container: NonNullable<React.RefObject<any>> = React.createRef<HTMLDivElement>()
 
@@ -12,11 +15,11 @@ export default class ClickOutside extends React.Component<any> {
   }
 
   render() {
-    const { children, onClickOutside, ...props } = this.props
+    const { children } = this.props
     return (
-      <div {...props} ref={this.container}>
-        {children}
-      </div>
+      children({
+        ref: this.container
+      })
     )
   }
 
@@ -37,7 +40,7 @@ export default class ClickOutside extends React.Component<any> {
     const el = this.container
     if(el) {
       if(!el.current.contains(e.target)) {
-        onClickOutside(e)
+        if(onClickOutside) onClickOutside()
       }
     }
   }
